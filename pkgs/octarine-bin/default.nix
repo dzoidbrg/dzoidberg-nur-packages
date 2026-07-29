@@ -1,10 +1,10 @@
-pkgs@{ stdenv, lib, zstd, autoPatchelfHook, makeWrapper, desktop-file-utils, openssl, glib, gtk3, libsoup_3, webkitgtk_4_1, libappindicator}:
+pkgs@{ stdenv, lib, zstd, autoPatchelfHook, makeWrapper, desktop-file-utils, openssl, glib, gtk3, libsoup_3, webkitgtk_4_1, libappindicator,fetchurl}:
 
 stdenv.mkDerivation rec {
   pname = "octarine";
   version = "0.48.1";
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://pub-3d35bc018fc54f11bde129e3e73e8002.r2.dev/${version}/linux/Octarine-bin-${version}-1-x86_64.pkg.tar.zst";
     hash = "sha256-7nZry+rsRiXDlsigTeIbvaD0ODcbLHbpl4h6ba4KFyA=";
   };
