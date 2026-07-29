@@ -1,4 +1,4 @@
-pkgs@{ stdenv }:
+pkgs@{ stdenv, lib }:
 
 stdenv.mkDerivation rec {
   pname = "octarine";
@@ -42,7 +42,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/octarine $wrapperfile \
      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.desktop-file-utils ]}
   ''; # https://github.com/tauri-apps/plugins-workspace/issues/2922 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     homepage = "https://octarine.app/";
     description = "Octarine Editor";
     mainProgram = "octarine";
