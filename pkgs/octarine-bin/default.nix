@@ -47,5 +47,8 @@ stdenv.mkDerivation rec {
     description = "Octarine Editor";
     mainProgram = "octarine";
     platforms = platforms.linux;
+    sourceProvenance = sourceTypes.binaryNativeCode;
+    license = licenses.unfree-redistributable
+
   };
 }
