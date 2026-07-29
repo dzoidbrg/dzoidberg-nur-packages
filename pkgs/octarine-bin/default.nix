@@ -48,7 +48,6 @@ stdenv.mkDerivation rec {
     mainProgram = "octarine";
     platforms = platforms.linux;
     sourceProvenance = sourceTypes.binaryNativeCode;
-    license = licenses.unfree-redistributable
-
+    license = licenses.unfree-redistributable;
   };
 }
