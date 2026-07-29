@@ -1,4 +1,4 @@
-pkgs@{ stdenv, lib }:
+pkgs@{ stdenv, lib, zstd, autoPatchelfHook, makeWrapper, desktop-file-utils, openssl, glib, gtk3, libsoup_3, webkitgtk_4_1, libappindicator}:
 
 stdenv.mkDerivation rec {
   pname = "octarine";
@@ -9,9 +9,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-7nZry+rsRiXDlsigTeIbvaD0ODcbLHbpl4h6ba4KFyA=";
   };
 
-  nativeBuildInputs = with pkgs; [ zstd autoPatchelfHook makeWrapper ];
+  nativeBuildInputs = [ zstd autoPatchelfHook makeWrapper ];
 
-  buildInputs = with pkgs; [
+  buildInputs = [
     openssl
     glib
     gtk3
@@ -40,7 +40,7 @@ stdenv.mkDerivation rec {
   '';
   postFixup = ''
     wrapProgram $out/bin/octarine $wrapperfile \
-     --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.desktop-file-utils ]}
+     --prefix PATH : ${lib.makeBinPath [ desktop-file-utils ]}
   ''; # https://github.com/tauri-apps/plugins-workspace/issues/2922 
   meta = with lib; {
     homepage = "https://octarine.app/";
